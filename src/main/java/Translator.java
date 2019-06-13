@@ -16,8 +16,11 @@ public class Translator {
         Scanner scanner = new Scanner(System.in);
         texts.add(scanner.nextLine());
 
+        List<Detection> detections = translate.detect(texts);
+        Detection detection = detections.get(0);
+
         List<Translation> translations = translate.translate(texts,
-                Translate.TranslateOption.sourceLanguage("es"),
+                Translate.TranslateOption.sourceLanguage(detection.getLanguage()),
                 Translate.TranslateOption.targetLanguage("de"));
 
         Translation translation = translations.get(0);
