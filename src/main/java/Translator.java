@@ -6,13 +6,18 @@ import java.util.Scanner;
 
 public class Translator {
 
-    public static final String API_KEY = "AIzaSyAqGKOFzgCbvtZZvGnf4zzi5TSOP-EUZTY";
+    private static final String API_KEY = "AIzaSyAqGKOFzgCbvtZZvGnf4zzi5TSOP-EUZTY";
+    private Translate translate;
+
+    public Translator() {
+        translate = TranslateOptions.newBuilder().setApiKey(API_KEY).build().getService();
+    }
 
     public static void main(String[] args) {
-        Translate translate = TranslateOptions.newBuilder().setApiKey(API_KEY).build().getService();
+        Translator translator = new Translator();
 
         List<String> texts = new LinkedList<>();
-        List<Language> languages = translate.listSupportedLanguages();
+        List<Language> languages = translator.translate.listSupportedLanguages();
 
         System.out.println("Lenguajes de salida:\n");
         for (Language language : languages) {
@@ -28,10 +33,10 @@ public class Translator {
         scanner = new Scanner(System.in);
         texts.add(scanner.nextLine());
 
-        List<Detection> detections = translate.detect(texts);
+        List<Detection> detections = translator.translate.detect(texts);
         Detection detection = detections.get(0);
 
-        System.out.println(doTranslation(translate, texts, detection, endLanguage));
+        System.out.println(doTranslation(translator.translate, texts, detection, endLanguage));
 
     }
 
@@ -44,4 +49,6 @@ public class Translator {
 
         return translation.getTranslatedText();
     }
+
+
 }
