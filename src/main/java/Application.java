@@ -1,19 +1,12 @@
-import com.google.cloud.translate.*;
+import com.google.cloud.translate.Detection;
+import com.google.cloud.translate.Language;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Translator {
-
-    private static final String API_KEY = "AIzaSyAqGKOFzgCbvtZZvGnf4zzi5TSOP-EUZTY";
-    public Translate translate;
-
-    public Translator() {
-        translate = TranslateOptions.newBuilder().setApiKey(API_KEY).build().getService();
-    }
-
-    /*public static void main(String[] args) {
+public class Application {
+    public static void main(String[] args) {
         Translator translator = new Translator();
 
         List<String> texts = new LinkedList<>();
@@ -36,19 +29,7 @@ public class Translator {
         List<Detection> detections = translator.translate.detect(texts);
         Detection detection = detections.get(0);
 
-        System.out.println(doTranslation(translator.translate, texts, detection, endLanguage));
+        System.out.println(translator.doTranslation(translator.translate, texts, detection, endLanguage));
 
-    }*/
-
-    public String doTranslation(Translate translate, List<String> texts, Detection detection, String endLang) {
-        List<Translation> translations = translate.translate(texts,
-                Translate.TranslateOption.sourceLanguage(detection.getLanguage()),
-                Translate.TranslateOption.targetLanguage(endLang));
-
-        Translation translation = translations.get(0);
-
-        return translation.getTranslatedText();
     }
-
-
 }

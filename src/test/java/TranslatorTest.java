@@ -9,11 +9,13 @@ import static org.junit.Assert.assertEquals;
 
 public class TranslatorTest {
     @Test
-    public void testTranslateTextList(Translate translate) {
+    public void testTranslateTextList() {
+        Translator translator = new Translator();
+
         List<String> texts = new LinkedList<>();
         texts.add("Hello, World!");
         texts.add("¡Hola Mundo!");
-        List<Translation> translations = translate.translate(texts);
+        List<Translation> translations = translator.translate.translate(texts);
 
         Translation translation = translations.get(0);
         assertEquals("Hello, World!", translation.getTranslatedText());
