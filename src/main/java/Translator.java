@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Translator {
 
-    private static final String API_KEY = "AIzaSyAqGKOFzgCbvtZZvGnf4zzi5TSOP-EUZTY";
+    public static final String API_KEY = "AIzaSyAqGKOFzgCbvtZZvGnf4zzi5TSOP-EUZTY";
 
     public static void main(String[] args) {
         Translate translate = TranslateOptions.newBuilder().setApiKey(API_KEY).build().getService();
@@ -31,12 +31,17 @@ public class Translator {
         List<Detection> detections = translate.detect(texts);
         Detection detection = detections.get(0);
 
+        System.out.println(doTranslation(translate, texts, detection, endLanguage));
+
+    }
+
+    public static String doTranslation(Translate translate, List<String> texts, Detection detection, String endLang) {
         List<Translation> translations = translate.translate(texts,
                 Translate.TranslateOption.sourceLanguage(detection.getLanguage()),
-                Translate.TranslateOption.targetLanguage(endLanguage));
+                Translate.TranslateOption.targetLanguage(endLang));
 
         Translation translation = translations.get(0);
-        System.out.println(translation.getTranslatedText());
 
+        return translation.getTranslatedText();
     }
 }

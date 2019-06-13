@@ -6,5 +6,6 @@ public class TranslatorTest {
 
     @Test
     public void main() {
+
     }
 }
