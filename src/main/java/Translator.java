@@ -13,15 +13,15 @@ public class Translator {
     public Translator() {
         translate = TranslateOptions.newBuilder().setApiKey(API_KEY).build().getService();
         languages.add("Inglés");
-        languages.add("Francés");
-        languages.add("Alemán");
         languages.add("Ruso");
-        languages.add("Chino");
+        languages.add("Francés");
+        languages.add("Árabe");
+        languages.add("Alemán");
         languages_code.add("en");
-        languages_code.add("fr");
-        languages_code.add("de");
         languages_code.add("ru");
-        languages_code.add("ch");
+        languages_code.add("fr");
+        languages_code.add("ar");
+        languages_code.add("de");
     }
 
     public String doTranslation(Translate translate, List<String> texts, Detection detection, String endLang) {
