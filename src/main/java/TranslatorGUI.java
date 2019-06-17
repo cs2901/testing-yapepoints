@@ -1,4 +1,4 @@
-import javax.swing.*;
+/*import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ public class TranslatorGUI {
     JTextArea textArea, englishArea, russianArea, frenchArea, arabianArea,germanArea;
     JButton translateButton;
     String text;
+    Translator translator = new Translator();
     public TranslatorGUI() {
         f = new JFrame("YapePoint translator");
         englishArea = new JTextArea("English", 20, 20);
@@ -46,8 +47,6 @@ public class TranslatorGUI {
                 System.out.println(textArea.getText());
                 englishArea.setText(textArea.getText());
 
-                Translator translator = new Translator();
-
                 ArrayList<String> finalTexts = translator.getTranslations(textArea.getText());
 
                 englishArea.setText("Inglés\n" + finalTexts.get(0));
@@ -72,4 +71,4 @@ public class TranslatorGUI {
         f.setVisible(true);
     }
 
-}
+}*/

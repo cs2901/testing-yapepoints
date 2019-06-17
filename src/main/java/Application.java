@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        /*Translator translator = new Translator();
+        Translator translator = new Translator();
 
         //List<Language> languages = translator.translate.listSupportedLanguages();
 
@@ -18,14 +18,12 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
 
-        ArrayList<String> finalTexts = translator.getTranslations(text);
+        String finalText = translator.getTranslations(text);
 
-        for (String fin : finalTexts) {
-            System.out.println(fin);
-            System.out.println("\n");
-        }*/
+        System.out.println(finalText);
+        System.out.println("\n");
 
-        TranslatorGUI gui = new TranslatorGUI();
+        //TranslatorGUI gui = new TranslatorGUI();
 
 
     }
