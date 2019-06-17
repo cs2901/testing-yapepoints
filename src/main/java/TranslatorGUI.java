@@ -10,32 +10,42 @@ public class TranslatorGUI {
     JPanel inputPanel = new JPanel();
     JList lista;
     Vector paginas;
-    JScrollPane englishPanel, russianPanel, frenchPanel, arabianPanel,germanPanel;
-    JTextArea textArea, englishArea, russianArea, frenchArea, arabianArea,germanArea;
+    JScrollPane englishPanel;
+    JTextArea textArea, englishArea;
     JButton translateButton;
     String text;
+    String traslate_to_language = "English";
+    String traslate_to_code = "en";
+    String[] languages = new String[] {"Español", "Inglés", "Ruso"};
+    String[] languages_codes = new String[] {"es", "en", "ru"};
+
+
     public TranslatorGUI() {
         f = new JFrame("YapePoint translator");
         englishArea = new JTextArea("English", 20, 20);
-        russianArea = new JTextArea("Russian", 20, 20);
-        frenchArea = new JTextArea("French", 20, 20);
-        arabianArea = new JTextArea("Árabe", 20, 20);
-        germanArea = new JTextArea("German", 20, 20);
 
         textArea = new JTextArea("Ingrese su texto", 20, 20);
-
         englishPanel = new JScrollPane(englishArea);
-        russianPanel = new JScrollPane(russianArea);
-        frenchPanel = new JScrollPane(frenchArea);
-        arabianPanel = new JScrollPane(arabianArea);
-        germanPanel = new JScrollPane(germanArea);
 
+        JComboBox<String> to_language = new JComboBox<>(languages);
+        to_language.setSelectedIndex(0);
+
+        to_language.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JComboBox cb = (JComboBox)actionEvent.getSource();
+                Integer index = (Integer) cb.getSelectedIndex();
+                traslate_to_language = languages[index];
+                traslate_to_code = languages_codes[index];
+                System.out.println(traslate_to_language);
+                System.out.println(traslate_to_code);
+            }
+        });
 
         JPanel translatorArea = new JPanel();
         f.getContentPane().add(inputPanel, "West");
         f.getContentPane().add(translatorArea, "East");
-
-
+        f.getContentPane().add(to_language, "North");
 
         inputPanel.add(textArea);
 
@@ -50,21 +60,12 @@ public class TranslatorGUI {
 
                 ArrayList<String> finalTexts = translator.getTranslations(textArea.getText());
 
-                englishArea.setText("Inglés\n" + finalTexts.get(0));
-                russianArea.setText("Ruso\n" + finalTexts.get(1));
-                frenchArea.setText("Francés\n" + finalTexts.get(2));
-                arabianArea.setText("Árabe\n" + finalTexts.get(3));
-                germanArea.setText("Alemán\n" + finalTexts.get(4));
+                englishArea.setText(traslate_to_language + " " + finalTexts.get(0));
 
             }
         });
 
         translatorArea.add(englishPanel);
-        translatorArea.add(russianPanel);
-        translatorArea.add(frenchPanel);
-        translatorArea.add(arabianPanel);
-        translatorArea.add(germanPanel);
-
 
         f.add(translateButton);
 
