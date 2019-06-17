@@ -24,9 +24,9 @@ public class Translator {
         languages_code.add("de");*/
     }
 
-    public String doTranslation(Translate translate, List<String> texts, String inputLang, String outputLang) {
+    public String doTranslation(Translate translate, List<String> texts, Detection detection, String outputLang) {
         List<Translation> translations = translate.translate(texts,
-                Translate.TranslateOption.sourceLanguage(inputLang),
+                Translate.TranslateOption.sourceLanguage(detection.getLanguage()),
                 Translate.TranslateOption.targetLanguage(outputLang));
 
         Translation translation = translations.get(0);
@@ -52,14 +52,14 @@ public class Translator {
             System.out.printf("Nombre: %s, Codigo: %s\n", language.getName(), language.getCode());
         }*/
 
-        System.out.println("Ingrese el código del lenguaje de entrada:\n");
+        /*System.out.println("Ingrese el código del lenguaje de entrada:\n");
 
         Scanner scanner = new Scanner(System.in);
-        String inputLang = scanner.nextLine();
+        String inputLang = scanner.nextLine();*/
 
         System.out.println("Ingrese el código del lenguaje de salida:\n");
 
-        scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String outputLang = scanner.nextLine();
 
 
@@ -71,7 +71,7 @@ public class Translator {
             endTexts.add(translation);
         }*/
 
-        return doTranslation(translate, texts, inputLang, outputLang);
+        return doTranslation(translate, texts, detection, outputLang);
 
     }
 
