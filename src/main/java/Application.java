@@ -13,7 +13,7 @@ public class Application {
 
         //List<Language> languages = translator.translate.listSupportedLanguages();
 
-        System.out.println("\nIngrese el texto a traducir:\n");
+        /*System.out.println("\nIngrese el texto a traducir:\n");
 
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
@@ -21,9 +21,9 @@ public class Application {
         String finalText = translator.getTranslations(text);
 
         System.out.println(finalText);
-        System.out.println("\n");
+        System.out.println("\n");*/
 
-        //TranslatorGUI gui = new TranslatorGUI();
+        TranslatorGUI gui = new TranslatorGUI();
 
 
     }

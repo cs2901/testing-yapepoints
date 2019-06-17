@@ -1,9 +1,9 @@
-/*import javax.swing.*;
+import com.google.cloud.translate.Detection;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
 
 public class TranslatorGUI {
     private JFrame f;
@@ -14,25 +14,23 @@ public class TranslatorGUI {
     JTextArea textArea, englishArea;
     JButton translateButton;
     String text;
-<<<<<<< HEAD
+
     Translator translator = new Translator();
-=======
+
     String traslate_to_language = "English";
     String traslate_to_code = "en";
-    String[] languages = new String[] {"Español", "Inglés", "Ruso"};
+    String[] languages = new String[] {"Español\n", "Inglés\n", "Ruso\n"};
     String[] languages_codes = new String[] {"es", "en", "ru"};
 
-
->>>>>>> leonidas
     public TranslatorGUI() {
         f = new JFrame("YapePoint translator");
-        englishArea = new JTextArea("English", 20, 20);
+        englishArea = new JTextArea("English\n", 20, 20);
 
         textArea = new JTextArea("Ingrese su texto", 20, 20);
         englishPanel = new JScrollPane(englishArea);
 
         JComboBox<String> to_language = new JComboBox<>(languages);
-        to_language.setSelectedIndex(0);
+        to_language.setSelectedIndex(1);
 
         to_language.addActionListener(new ActionListener() {
             @Override
@@ -60,9 +58,14 @@ public class TranslatorGUI {
                 System.out.println(textArea.getText());
                 englishArea.setText(textArea.getText());
 
-                ArrayList<String> finalTexts = translator.getTranslations(textArea.getText());
+                Detection detection = translator.translate.detect(textArea.getText());
 
-                englishArea.setText(traslate_to_language + " " + finalTexts.get(0));
+                List<String> texts = new LinkedList<>();
+                texts.add(textArea.getText());
+
+                String finalText = translator.doTranslation(translator.translate, texts, detection, traslate_to_code);
+
+                englishArea.setText(traslate_to_language + " " + finalText);
 
             }
         });
@@ -75,4 +78,4 @@ public class TranslatorGUI {
         f.setVisible(true);
     }
 
-}*/
+}

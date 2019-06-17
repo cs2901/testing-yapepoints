@@ -34,9 +34,6 @@ public class Translator {
         return translation.getTranslatedText();
     }
 
-    /*public ArrayList<String> getLanguages() {
-        return languages;
-    }*/
 
     public String getTranslations(String text) {
 
@@ -45,31 +42,10 @@ public class Translator {
         List<String> texts = new LinkedList<>();
         texts.add(text);
 
-        //List<Language> languages = translate.listSupportedLanguages();
-
-        /*System.out.println("Lenguajes de salida:\n");
-        for (Language language : languages) {
-            System.out.printf("Nombre: %s, Codigo: %s\n", language.getName(), language.getCode());
-        }*/
-
-        /*System.out.println("Ingrese el código del lenguaje de entrada:\n");
-
-        Scanner scanner = new Scanner(System.in);
-        String inputLang = scanner.nextLine();*/
-
         System.out.println("Ingrese el código del lenguaje de salida:\n");
 
         Scanner scanner = new Scanner(System.in);
         String outputLang = scanner.nextLine();
-
-
-        /*ArrayList<String> endTexts = new ArrayList<>();
-
-        for (String language : languages_code ) {
-
-            String translation = doTranslation(translate, texts, detection, language);
-            endTexts.add(translation);
-        }*/
 
         return doTranslation(translate, texts, detection, outputLang);
 
